@@ -2,7 +2,7 @@ import {
     RefreshMutation,
     RefreshMutationVariables,
     RefreshDocument,
-  } from "../../graphql/generated";
+  } from "../graphql/generated";
   import { readAccessToken, setAccessToken } from "./helpers";
   
   export default async function refreshAccessToken() {

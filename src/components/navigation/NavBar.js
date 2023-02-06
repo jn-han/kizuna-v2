@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import SignInButton from '../SignInButton'
 
 const NavBar = () => {
   return (
@@ -19,11 +20,9 @@ const NavBar = () => {
                     Following
                 </Link>
             </div>
-            <div className='flex items-center'>
-                <div>
-                    <Link href='/connectWallet' className='p-3 bg-grey h-2 hover:bg-accent rounded-lg duration-700'>
-                        Connect Wallet
-                    </Link>
+            <div className='flex items-center justify-end h-2'>
+                <div className='scale-90'>
+                    <SignInButton />
                 </div>
             </div>
         </nav>
