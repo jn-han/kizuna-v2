@@ -6,7 +6,6 @@ export default function Document() {
       <Head />
       <body className='bg-background text-white text-inter font-regular' >
           <Main />
-          hello
           <NextScript />
       </body>
     </Html>
