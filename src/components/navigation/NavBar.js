@@ -16,7 +16,7 @@ const NavBar = () => {
                 <Link href='' className='p-5 lg:text-xl hover:text-accent duration-700'>
                     Friends
                 </Link>
-                <Link href='/viewProfiles' className='hover:text-accent duration-700 lg:text-xl'>
+                <Link href='/profiles' className='hover:text-accent duration-700 lg:text-xl'>
                     Following
                 </Link>
             </div>
