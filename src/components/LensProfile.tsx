@@ -9,22 +9,21 @@ type Props = {
 export default function LensProfile({ profile }: Props) {
     console.log(profile)
     return (
-        <div className="bg-accent flex flex-col items-center basis-1/6 flex-shrink-0 p-1 m-4 rounded-lg">
-            <div className="w-3/5 h-1/2">
-                <MediaRenderer 
-                // @ts-ignore
-                    src={profile?.picture?.original?.url || ""}
-                    alt={profile.name || profile.handle}
-                    className=""
-                />
-            </div>
-            <div className="">
-            <Link href={`/profiles/${profile.handle}`}>
-                    <p className="text-lg">{profile.name || profile.handle}</p>
-            </Link>
-            </div>
-                <p className="text-md">Followers: {profile.stats.totalFollowers}</p>
-                <p className="text-sm">{profile.bio}</p>
+        <div className="basis-52 flex-shrink-0 rounded-lg justify-between">
+                <Link className="flex flex-col items-center" href={`/profiles/${profile.handle}`}>
+                        <MediaRenderer 
+                        // @ts-ignore
+                        src={profile?.picture?.original?.url || "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg"}
+                        alt={profile.name || profile.handle}
+                        height="50%"
+                        width="50%"
+                        className="rounded-full"
+                        />
+
+                    <p className="text-lg mt-3">{profile.name || profile.handle}</p>
+
+
+                </Link>
         </div>
     )
 }

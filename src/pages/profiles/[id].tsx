@@ -3,6 +3,7 @@ import { MediaRenderer } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
 import FeedPost from "../../components/FeedPost";
 import { useProfileQuery, usePublicationsQuery } from "../../graphql/generated";
+import ContentPlayer from "../../components/livepeer/ContentPlayer";
 
 type Props = {};
 
@@ -43,60 +44,63 @@ export default function ProfilePage ({}: Props) {
     }
 
     return (
-        <div>
-            <div className="p-1 w-1/2 absolute top-40 m-3 inline-block">
-                <Player></Player>
+        <div className="h-screen w-full">
+            <div className="p-4 w-1/2 absolute top-36 m-3 inline-block">
+                <ContentPlayer id="6d7el73r1y12chxr"/>
             </div>
 
             <div>
                 {/* Profile information */}
-                <div className=" w-5/12 absolute right-10 top-40 bg-header inline-block p-4 border-solid border-grey border-[1px] shadow-2xl rounded-lg">
-                    <div className="w-full">
+                <div className=" w-5/12 h-2/5 absolute right-10 top-36 bg-header inline-block p-4 border-solid border-grey border-[1px] shadow-2xl rounded-lg">
+                    <div className="w-full h-3/6">
                         {/* Cover Image */}
                         <MediaRenderer 
-                        src={profileData?.profile?.coverPicture.original.url || ""}
-                        alt={
-                            profileData?.profile?.name || profileData?.profile?.handle
-                        }
-                        height="100%"
-                        width="100%"
-                        className="z-10"
+                            //@ts-ignore
+                            src={profileData?.profile?.coverPicture.original.url || "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg"}
+                            alt={
+                                profileData?.profile?.name || profileData?.profile?.handle
+                            }
+                            height=""
+                            width=""
+                            className="object-contain"
                         />
                     </div>
-                    <div>
-                        {/* Profile Picture */}
-                        <MediaRenderer
-                        src={profileData?.profile?.picture?.original.url || ""}
-                        alt={
-                            profileData?.profile?.name || profileData?.profile?.handle
-                        }
-                        height="30%"
-                        width="30%"
-                        className="rounded-xl ring-8 relative -top-10 left-2 z-0 m-3 ring-header "
-                        />
-                    </div>
-                    <div className="relative -top-12 left-5 text-xl">
-                        {profileData.profile.name}
-                    </div>
-                    <div className="relative -top-12 left-5 text-accent">
+                    <div className="-top-12 left-10 relative h-0 w-1/4 bg-accent pb-[10%]">
+                        <div>
+                            {/* Profile Picture */}
+                            <MediaRenderer
+                            //@ts-ignore
+                            src={profileData?.profile?.picture?.original.url || ""}
+                            alt={
+                                profileData?.profile?.name || profileData?.profile?.handle
+                            }
+                            height="100%"
+                            width="100%"
+                            className="rounded-xl ring-8 object-contain ring-header "
+                            />
+                        <p className="mt-2 ml-2">{profileData.profile.name}</p>
+                        <p className="ml-2 text-accent">
                         @{profileData.profile.handle}
-                    </div>
-                    
-                    {/* <div className="relative left-52"> */}
-                        {/* Followers */}
-                        {/* <div className="inline-block w-3/12 bg-black p-2 rounded-lg">
-                                {profileData.profile.stats.totalFollowers}
-                                <br></br>
-                                Followers
-                        </div> */}
-                        
-                        {/* Following */}
-                        {/* <div className="inline-block w-3/12 span-right ml-2 p-2 h-auto bg-black left-2 rounded-lg">
-                            {profileData.profile.stats.totalFollowing}
-                            <br></br>
-                            Following
+                        </p>
                         </div>
-                    </div> */}
+                                            
+                        {/* <div className=""> */}
+                            {/* Followers */}
+                            {/* <div className="">
+                                    {profileData.profile.stats.totalFollowers}
+                                    <br></br>
+                                    Followers
+                            </div> */}
+                            {/* Following */}
+                            {/* <div className="">
+                                {profileData.profile.stats.totalFollowing}
+                                <br></br>
+                                Following
+                            </div>
+                        </div> */}
+                    </div>
+
+
 
 
                 </div>

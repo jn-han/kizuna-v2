@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()
 
   const livepeerClient = createReactClient({
-    provider: studioProvider({ apiKey: 'inserthere'})
+    provider: studioProvider({ apiKey: 'eecb8587-0ce0-49f8-bcef-53880665c8bc'})
   })
 
   return (

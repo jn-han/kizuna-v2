@@ -43,10 +43,12 @@ export default function FeedPost({ publication }: Props) {
         </p>
 
         {/* Image / media of the post if there is one */}
-        {(publication.metadata.image ||
+        {(//@ts-ignore
+          publication.metadata.image ||
           publication.metadata.media?.length > 0) && (
           <MediaRenderer
             src={
+              //@ts-ignore
               publication.metadata.image||
               publication.metadata.media[0].original.url
             }

@@ -23,5 +23,6 @@ module.exports = {
       'white': '#FFFFFF',
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }

@@ -21,9 +21,9 @@ export default function Home() {
     console.log(data?.exploreProfiles.items)
 
   return (
-    <div>
-        <h1 className="text-xl mt-3 ml-5">Popular Profiles</h1>
-        <div className="flex flex-row flex-nowrap overflow-x-auto h-1/4">
+    <div className=''>
+        <h1 className="text-xl m-7">Popular Profiles</h1>
+        <div className="flex flex-row flex-nowrap overflow-x-auto m-7">
         {data?.exploreProfiles.items.map((profile) => (
             <LensProfile key={profile.id} profile={profile}/>
         ))}
