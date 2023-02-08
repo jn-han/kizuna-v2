@@ -10,7 +10,7 @@ export default function LensProfile({ profile }: Props) {
     console.log(profile)
     return (
         <div className="bg-accent flex flex-col items-center basis-1/6 flex-shrink-0 p-1 m-4 rounded-lg">
-            <div className="w-3/5">
+            <div className="w-3/5 h-1/2">
                 <MediaRenderer 
                 // @ts-ignore
                     src={profile?.picture?.original?.url || ""}
