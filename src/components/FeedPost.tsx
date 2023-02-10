@@ -24,7 +24,7 @@ export default function FeedPost({ publication }: Props) {
 
         {/* Author profile Name */}
         <Link
-          href={`/profile/${publication.profile.handle}`}
+          href={`/profiles/${publication.profile.handle}`}
           className=""
         >
           {publication.profile.name || publication.profile.handle}

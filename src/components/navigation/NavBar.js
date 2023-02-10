@@ -21,9 +21,7 @@ const NavBar = () => {
                 </Link>
             </div>
             <div className='flex items-center justify-end h-2'>
-                <div className='scale-90'>
                     <SignInButton />
-                </div>
             </div>
         </nav>
     </div>

@@ -2,9 +2,11 @@ import { useAddress,
     useNetworkMismatch,
     useNetwork,
     ConnectWallet,
-    ChainId
+    ChainId,
+    MediaRenderer
 } from '@thirdweb-dev/react'
 import { profile } from 'console';
+import Link from 'next/link';
 import React from 'react'
 import { classicNameResolver } from 'typescript';
 
@@ -24,7 +26,11 @@ export default function SignInButton({}: Props) {
     //1. User needs to connect their wallet
     if(!address) {
         return(
-            <ConnectWallet />
+            <ConnectWallet 
+            accentColor='#3BC68F'
+            colorMode='light'
+            
+            />
         )
     }
 
@@ -54,7 +60,7 @@ export default function SignInButton({}: Props) {
      
 
     //4. Show the user their profile on lens
-
+    console.log(profileQuery.data?.defaultProfile?.handle)
     if(profileQuery.isLoading) {
         return <div>Loading...</div>
     }
@@ -64,7 +70,24 @@ export default function SignInButton({}: Props) {
     }
 
     if(profileQuery.data?.defaultProfile) {
-        return <div>Hello {profileQuery.data?.defaultProfile?.handle}</div>
+
+
+        return (
+            <Link href={`/profiles/${profileQuery.data.defaultProfile.handle}`} className='h-[60px] object-contain w-[60px]'>
+                <MediaRenderer 
+                src={profileQuery.data.defaultProfile.picture.original.url || ""}
+                alt={profileQuery?.data?.defaultProfile?.name}
+                height="100%"
+                width="100%"
+                className='bg-black rounded-full'
+                >
+
+                </MediaRenderer>
+                
+            </Link>
+
+        )
+
     }
 
     return (

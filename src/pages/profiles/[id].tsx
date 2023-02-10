@@ -1,9 +1,9 @@
 import { Player } from "@livepeer/react";
 import { MediaRenderer } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import FeedPost from "../../components/FeedPost";
 import { useProfileQuery, usePublicationsQuery } from "../../graphql/generated";
 import ContentPlayer from "../../components/livepeer/ContentPlayer";
+import Image from "next/image";
 
 type Props = {};
 
@@ -32,7 +32,6 @@ export default function ProfilePage ({}: Props) {
         enabled: !!profileData?.profile?.id
     })
 
-    console.log({loadingProfile, profileData, publicationsData, isLoadingPublications})
 
 
     if(publicationsError || profileError) {
@@ -43,46 +42,51 @@ export default function ProfilePage ({}: Props) {
         return <div>Loading Profile...</div>
     }
 
+    function getIPFSbackground() {
+        return profileData?.profile?.coverPicture?.original?.url.substr(7, profileData.profile.coverPicture.original.url.length) || ""
+    }
+
+    function getIPFSprofile() {
+        return profileData?.profile?.picture?.original?.url.substr(7, profileData.profile.coverPicture.original.url.length)
+    }
+
+    var ipfsGateway:string = "https://ipfs.io/ipfs/" 
+
     return (
-        <div className="h-screen w-full">
-            <div className="p-4 w-1/2 absolute top-36 m-3 inline-block">
-                <ContentPlayer id="6d7el73r1y12chxr"/>
+        <div className=" flex flex-row">
+            <div className="w-3/5 m-20 mr-0 ">
+                <ContentPlayer 
+                id="6d7el73r1y12chxr"
+                />
             </div>
 
-            <div>
+            <div className="w-2/5 m-20 bg-accent">
                 {/* Profile information */}
-                <div className=" w-5/12 h-2/5 absolute right-10 top-36 bg-header inline-block p-4 border-solid border-grey border-[1px] shadow-2xl rounded-lg">
-                    <div className="w-full h-3/6">
-                        {/* Cover Image */}
-                        <MediaRenderer 
-                            //@ts-ignore
-                            src={profileData?.profile?.coverPicture.original.url || "https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg"}
-                            alt={
-                                profileData?.profile?.name || profileData?.profile?.handle
-                            }
-                            height=""
-                            width=""
-                            className="object-contain"
-                        />
+                <div className="h-2/5 bg-black">
+                    <div className="">
+                            {/* Cover Image */}
+                                <MediaRenderer
+                                src={profileData?.profile?.coverPicture?.original?.url}
+                                height="100%"
+                                width="100%"
+                                className="w-full h-full"
+                                />
+
                     </div>
-                    <div className="-top-12 left-10 relative h-0 w-1/4 bg-accent pb-[10%]">
-                        <div>
+
+                    <div className="">
+                        <div className="">
                             {/* Profile Picture */}
-                            <MediaRenderer
+                            {/* <img
                             //@ts-ignore
-                            src={profileData?.profile?.picture?.original.url || ""}
+                            src={ipfsGateway + getIPFSprofile()}
                             alt={
                                 profileData?.profile?.name || profileData?.profile?.handle
                             }
-                            height="100%"
-                            width="100%"
-                            className="rounded-xl ring-8 object-contain ring-header "
-                            />
-                        <p className="mt-2 ml-2">{profileData.profile.name}</p>
-                        <p className="ml-2 text-accent">
-                        @{profileData.profile.handle}
-                        </p>
+                            className="h-56 w-56"
+                            /> */}
                         </div>
+
                                             
                         {/* <div className=""> */}
                             {/* Followers */}
